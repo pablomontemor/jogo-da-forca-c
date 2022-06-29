@@ -101,6 +101,9 @@ void limpa_tela();
 void ver_ranking();
 void ver_ajuda();
 void exibeAjuda();
+void mudarLeitura();
+void restaurarLeitura();
+
 
 /*The best way to do that kind of thing is to open your file for reading,
 open a new file for writing, copy the part of the file before the insertion point,
@@ -307,6 +310,7 @@ void exibeAjuda(){
   getchar();
 }
 
+//referencia: https://stackoverflow.com/questions/21091191/implementing-a-keypress-event-in-c
 //muda o tipo de leitura do stdin pra pegar teclas sem precisar de ENTER
 void mudarLeitura()
 {
@@ -394,12 +398,12 @@ void *timer(void *arg)
   return NULL;
 }
 
+//referencia: https://stackoverflow.com/questions/2907062/fgets-instructions-gets-skipped-why
 //limpa a entrada padrao de resquicio de caracteres
 void limpa_stdin()
 {
   int c;
-  while ((c = getchar()) != '\n' && c != EOF)
-    ;
+  while ((c = getchar()) != '\n' && c != EOF);
 }
 
 //modo multiplayer continuar jogando
@@ -500,6 +504,7 @@ void main_menu()
   } while (loop == 1);
 }
 
+//exibe estados da forca
 void forca(int estado)
 {
   printf(YEL);
@@ -679,7 +684,7 @@ void multiplayer()
     printf(BHWHT "\n\nLetra: " reset);
     char letra;
 
-    letra = fgetc(stdin); // fazendo os 2 primeiros caracteres do p_sec sumir??
+    letra = fgetc(stdin);
 
     // converte letra minuscula para maiuscula
     if (letra <= 122 && letra >= 97)
@@ -907,6 +912,7 @@ void singleplayer()
 
     limpa_tela();
 
+    //referencia: https://stackoverflow.com/questions/232237/whats-the-best-way-to-return-a-random-line-in-a-text-file-using-c/232287#232287
     // pegar palavra secreta do arquivo
     FILE *f;
     int nLines = 0;
@@ -940,8 +946,8 @@ void singleplayer()
 
     sscanf(line, "%s %100[0-9a-zA-Z ]", dica_game, p_sec);
 
-    //printf("A palavra secreta sorteada foi %s e a dica é %s", p_sec, dica_game);
-    //getchar();
+    printf("A palavra secreta sorteada foi %s e a dica é %s", p_sec, dica_game);
+    getchar();
 
     char p_tela[100];      // palavra para tela
     strcpy(p_tela, p_sec); // copia de p_sec
@@ -1246,3 +1252,15 @@ int main(void)
 
   return 0;
 }
+
+/*
+
+Referencias:
+  https://gist.github.com/RabaDabaDoba/145049536f815903c79944599c6f952a
+  https://stackoverflow.com/questions/21091191/implementing-a-keypress-event-in-c
+  https://stackoverflow.com/questions/2907062/fgets-instructions-gets-skipped-why
+  https://stackoverflow.com/questions/232237/whats-the-best-way-to-return-a-random-line-in-a-text-file-using-c/232287#232287
+  https://www.youtube.com/watch?v=CylpD8zXHZA&t=658s
+  https://www.youtube.com/watch?v=JYMAid8-aOE
+
+*/
