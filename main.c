@@ -104,7 +104,7 @@ void exibeAjuda();
 void mudarLeitura();
 void restaurarLeitura();
 
-
+//referencia: https://stackoverflow.com/questions/9033060/c-function-to-insert-text-at-particular-location-in-file-without-over-writing-th
 /*The best way to do that kind of thing is to open your file for reading,
 open a new file for writing, copy the part of the file before the insertion point,
 insert the data, copy the rest, and then move the new file over the old one.*/
@@ -1260,6 +1260,7 @@ Referencias:
   https://stackoverflow.com/questions/21091191/implementing-a-keypress-event-in-c
   https://stackoverflow.com/questions/2907062/fgets-instructions-gets-skipped-why
   https://stackoverflow.com/questions/232237/whats-the-best-way-to-return-a-random-line-in-a-text-file-using-c/232287#232287
+  https://stackoverflow.com/questions/9033060/c-function-to-insert-text-at-particular-location-in-file-without-over-writing-th
   https://www.youtube.com/watch?v=CylpD8zXHZA&t=658s
   https://www.youtube.com/watch?v=JYMAid8-aOE
 
